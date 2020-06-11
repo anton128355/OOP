@@ -1,12 +1,12 @@
 class MyArray:
     collection = [None] * 15
 
-    def regular_extend(self, lst):
+    def main_func(self, lst):
         if len(lst) > len(self.collection):
             for i in range(round(0.3 * len(self.collection))):
                 self.collection.extend([None])
 
-    def c_append(self, data):  # dataa - is any data instead of collections
+    def c_append(self, data):
         count = 0
         for i in self.collection:
             if i is not None:
@@ -15,13 +15,13 @@ class MyArray:
             self.collection.extend([None])
         self.collection.pop(count)
         self.collection.insert(count, data)
-        self.regular_extend(data)
+        self.main_func(data)
         return self.collection
 
-    def c_extend(self, cll):  # cll - is collections
+    def c_extend(self, cll):
         to_append = [cll]
         self.collection += to_append
-        self.regular_extend(cll)
+        self.main_func(cll)
         return self.collection
 
     def c_remove(self, element):
@@ -42,7 +42,7 @@ class MyArray:
         if amount != 0:
             return amount
         else:
-            return 'is not in list'
+            return "Error in list!"
 
     def c_copy(self):
         copied = self.collection
@@ -55,7 +55,7 @@ class MyArray:
         return temp
 
     def __init__(self, lst):
-        self.regular_extend(lst)
+        self.main_func(lst)
         for i in range(len(lst)):
             self.collection[i] = lst[i]
 
